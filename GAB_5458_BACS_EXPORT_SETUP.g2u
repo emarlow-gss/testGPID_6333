@@ -1,0 +1,930 @@
+Program.Sub.ScreenSU.Start
+Gui.F_Setup..Create
+Gui.F_Setup..Caption("BACS Export Setup [5458]")
+Gui.F_Setup..Size(9825,6765)
+Gui.F_Setup..MinX(0)
+Gui.F_Setup..MinY(0)
+Gui.F_Setup..Position(0,0)
+Gui.F_Setup..BackColor(-2147483633)
+Gui.F_Setup..MousePointer(0)
+Gui.F_Setup..Event(UnLoad,Unload)
+Gui.F_Setup..MaxButton(False)
+Gui.F_Setup..Sizeable(False)
+Gui.F_Setup.lbl1.Create(Label,"Bank Name",True,1935,255,0,75,150,True,0,"Arial",8,-2147483633,0)
+Gui.F_Setup.txtBank.Create(TextBox,"",True,2835,300,0,105,360,True,0,"Arial",8,-2147483643,1)
+Gui.F_Setup.tab1.Create(Tab)
+Gui.F_Setup.tab1.Size(9390,5340)
+Gui.F_Setup.tab1.Position(105,765)
+Gui.F_Setup.tab1.Tabs(2)
+Gui.F_Setup.tab1.SetTab(0)
+Gui.F_Setup.tab1.Caption("File Format")
+Gui.F_Setup.tab1.SetTab(1)
+Gui.F_Setup.tab1.Caption("Options")
+Gui.F_Setup.GsGCFormat.Create(GsGridControl)
+Gui.F_Setup.GsGCFormat.Size(9120,4770)
+Gui.F_Setup.GsGCFormat.Position(90,75)
+Gui.F_Setup.GsGCFormat.Parent("tab1",0)
+Gui.F_Setup.GsGCFormat.Event(RowCellClick,GsGCFormat_RowCellClick)
+Gui.F_Setup.GsGCFormat.Event(CellValueChanged,GsGCFormat_CellValueChanged)
+Gui.F_Setup.lbl2.Create(Label,"Sender's Name",True,1470,255,0,60,150,True,0,"Arial",8,-2147483633,0)
+Gui.F_Setup.lbl2.Parent("tab1",1)
+Gui.F_Setup.txtSender.Create(TextBox,"",True,2745,300,0,105,390,True,0,"Arial",8,-2147483643,1)
+Gui.F_Setup.txtSender.Parent("tab1",1)
+Gui.F_Setup.txtSender.MaxLength(60)
+Gui.F_Setup.lbl3.Create(Label,"User Field 1",True,1935,255,0,75,915,True,0,"Arial",8,-2147483633,0)
+Gui.F_Setup.lbl3.Parent("tab1",1)
+Gui.F_Setup.txtUF1.Create(TextBox,"",True,2775,300,0,105,1125,True,0,"Arial",8,-2147483643,1)
+Gui.F_Setup.txtUF1.Parent("tab1",1)
+Gui.F_Setup.txtUF1.MaxLength(30)
+Gui.F_Setup.lbl4.Create(Label,"User Field 2",True,1935,255,0,120,1725,True,0,"Arial",8,-2147483633,0)
+Gui.F_Setup.lbl4.Parent("tab1",1)
+Gui.F_Setup.txtUF2.Create(TextBox,"",True,2775,300,0,90,1950,True,0,"Arial",8,-2147483643,1)
+Gui.F_Setup.txtUF2.Parent("tab1",1)
+Gui.F_Setup.txtUF2.MaxLength(30)
+Gui.F_Setup.frame2.Create(Frame)
+Gui.F_Setup.frame2.Size(5670,2775)
+Gui.F_Setup.frame2.Position(3540,2055)
+Gui.F_Setup.frame2.Parent("tab1",1)
+Gui.F_Setup.frame2.Caption("Numeric Format for Amount Only")
+Gui.F_Setup.chkDecimal.Create(CheckBox)
+Gui.F_Setup.chkDecimal.Size(3270,360)
+Gui.F_Setup.chkDecimal.Position(120,285)
+Gui.F_Setup.chkDecimal.Parent("frame2")
+Gui.F_Setup.chkDecimal.Caption("Decimal Separator")
+Gui.F_Setup.frame1.Create(Frame)
+Gui.F_Setup.frame1.Size(5445,1230)
+Gui.F_Setup.frame1.Position(120,1470)
+Gui.F_Setup.frame1.Parent("frame2")
+Gui.F_Setup.frame1.Caption("No Decimal Separator")
+Gui.F_Setup.chkLeading.Create(CheckBox)
+Gui.F_Setup.chkLeading.Size(1770,360)
+Gui.F_Setup.chkLeading.Position(135,285)
+Gui.F_Setup.chkLeading.Parent("frame1")
+Gui.F_Setup.chkLeading.Caption("Leading zeroes")
+Gui.F_Setup.chkLeading.Event(Click,chkLeading_Click)
+Gui.F_Setup.txtLeading.Create(TextBox,"",True,870,300,0,2100,315,True,0,"Arial",8,-2147483643,1)
+Gui.F_Setup.txtLeading.Parent("frame1")
+Gui.F_Setup.txtLeading.NumericOnly(2)
+Gui.F_Setup.chkTrailing.Create(CheckBox)
+Gui.F_Setup.chkTrailing.Size(1890,360)
+Gui.F_Setup.chkTrailing.Position(135,735)
+Gui.F_Setup.chkTrailing.Parent("frame1")
+Gui.F_Setup.chkTrailing.Caption("Trailing zeroes")
+Gui.F_Setup.chkTrailing.Event(Click,chkTrailing_Click)
+Gui.F_Setup.txtTrailing.Create(TextBox,"",True,870,300,0,2100,750,True,0,"Arial",8,-2147483643,1)
+Gui.F_Setup.txtTrailing.Parent("frame1")
+Gui.F_Setup.txtTrailing.NumericOnly(2)
+Gui.F_Setup.lbl5.Create(Label,"Maximum Character Length",True,2190,255,0,120,780,True,0,"Arial",8,-2147483633,0)
+Gui.F_Setup.lbl5.Parent("frame2")
+Gui.F_Setup.txtMaxChar.Create(TextBox,"",True,1515,300,0,150,1020,True,0,"Arial",8,-2147483643,1)
+Gui.F_Setup.txtMaxChar.Parent("frame2")
+Gui.F_Setup.txtMaxChar.NumericOnly(2)
+Gui.F_Setup.txtMaxChar.Event(LostFocus,txtMaxChar_LostFocus)
+Gui.F_Setup.lbl6.Create(Label,"File Output",True,1935,255,0,3540,150,True,0,"Arial",8,-2147483633,0)
+Gui.F_Setup.lbl6.Parent("tab1",1)
+Gui.F_Setup.ddlOutput.Create(DropDownList)
+Gui.F_Setup.ddlOutput.Size(2400,330)
+Gui.F_Setup.ddlOutput.Position(3555,390)
+Gui.F_Setup.ddlOutput.Parent("tab1",1)
+Gui.F_Setup.lbl7.Create(Label,"User Field 3",True,1935,255,0,120,2580,True,0,"Arial",8,-2147483633,0)
+Gui.F_Setup.lbl7.Parent("tab1",1)
+Gui.F_Setup.txtUF3.Create(TextBox,"",True,2745,300,0,90,2805,True,0,"Arial",8,-2147483643,1)
+Gui.F_Setup.txtUF3.Parent("tab1",1)
+Gui.F_Setup.txtUF3.MaxLength(30)
+Gui.F_Setup.lbl8.Create(Label,"User Field 4",True,1935,255,0,120,3435,True,0,"Arial",8,-2147483633,0)
+Gui.F_Setup.lbl8.Parent("tab1",1)
+Gui.F_Setup.txtUF4.Create(TextBox,"",True,2745,300,0,90,3660,True,0,"Arial",8,-2147483643,1)
+Gui.F_Setup.txtUF4.Parent("tab1",1)
+Gui.F_Setup.txtUF4.MaxLength(30)
+Gui.F_Setup.lbl9.Create(Label,"User Field 5",True,1935,255,0,120,4290,True,0,"Arial",8,-2147483633,0)
+Gui.F_Setup.lbl9.Parent("tab1",1)
+Gui.F_Setup.txtUF5.Create(TextBox,"",True,2745,300,0,90,4500,True,0,"Arial",8,-2147483643,1)
+Gui.F_Setup.txtUF5.Parent("tab1",1)
+Gui.F_Setup.txtUF5.MaxLength(30)
+Gui.F_Setup.chkDefault.Create(CheckBox)
+Gui.F_Setup.chkDefault.Size(2370,360)
+Gui.F_Setup.chkDefault.Position(3555,1590)
+Gui.F_Setup.chkDefault.Parent("tab1",1)
+Gui.F_Setup.chkDefault.Caption("Default BACS Setup")
+Gui.F_Setup.lbl10.Create(Label,"Check Date Format",True,1935,255,0,6615,150,True,0,"Arial",8,-2147483633,0)
+Gui.F_Setup.lbl10.Parent("tab1",1)
+Gui.F_Setup.ddlDateFormat.Create(DropDownList)
+Gui.F_Setup.ddlDateFormat.Size(1815,330)
+Gui.F_Setup.ddlDateFormat.Position(6630,390)
+Gui.F_Setup.ddlDateFormat.Parent("tab1",1)
+Gui.F_Setup.lbl11.Create(Label,"Sort Code Separator (e.g. 12-34-56)",True,3090,255,0,3540,915,True,0,"Arial",8,-2147483633,0)
+Gui.F_Setup.lbl11.Parent("tab1",1)
+Gui.F_Setup.ddlSortCode.Create(DropDownList)
+Gui.F_Setup.ddlSortCode.Size(1950,330)
+Gui.F_Setup.ddlSortCode.Position(3555,1125)
+Gui.F_Setup.ddlSortCode.Parent("tab1",1)
+Gui.F_Setup.cmdBrw.Create(Button)
+Gui.F_Setup.cmdBrw.Size(450,375)
+Gui.F_Setup.cmdBrw.Position(3045,285)
+Gui.F_Setup.cmdBrw.Caption("^")
+Gui.F_Setup.cmdBrw.Event(Click,cmdBrw_Click)
+Gui.F_Setup.cmdNew.Create(Button)
+Gui.F_Setup.cmdNew.Size(1380,375)
+Gui.F_Setup.cmdNew.Position(3600,270)
+Gui.F_Setup.cmdNew.Caption("New")
+Gui.F_Setup.cmdNew.Event(Click,cmdNew_Click)
+Gui.F_Setup.cmdSave.Create(Button)
+Gui.F_Setup.cmdSave.Size(1470,375)
+Gui.F_Setup.cmdSave.Position(5085,270)
+Gui.F_Setup.cmdSave.Caption("Save")
+Gui.F_Setup.cmdSave.Event(Click,cmdSave_Click)
+Gui.F_Setup.cmdDelete.Create(Button)
+Gui.F_Setup.cmdDelete.Size(1515,375)
+Gui.F_Setup.cmdDelete.Position(6660,270)
+Gui.F_Setup.cmdDelete.Caption("Delete")
+Gui.F_Setup.cmdDelete.Event(Click,cmdDelete_Click)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+V.Global.iID.Declare(Long,0)
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.ODBC.Connection!Conx.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+
+F.Intrinsic.Control.CallSub(Initialize)
+
+Gui.F_Setup..Show
+Program.Sub.Main.End
+
+Program.Sub.Unload.Start
+F.ODBC.Connection!Conx.Close
+F.Intrinsic.Control.End
+Program.Sub.Unload.End
+
+Program.Sub.cmdNew_Click.Start
+V.Local.i1.Declare
+
+V.Global.iID.Set(0)
+
+'Reset screen values
+Gui.F_Setup.txtBank.Text("")
+Gui.F_Setup.txtSender.Text("")
+Gui.F_Setup.txtLeading.Text("")
+Gui.F_Setup.txtTrailing.Text("")
+Gui.F_Setup.txtUF1.Text("")
+Gui.F_Setup.txtUF2.Text("")
+Gui.F_Setup.txtMaxChar.Text("")
+
+Gui.F_Setup.chkDecimal.Value(0)
+Gui.F_Setup.chkLeading.Value(0)
+Gui.F_Setup.txtLeading.Enabled(False)
+Gui.F_Setup.chkTrailing.Value(0)
+Gui.F_Setup.txtTrailing.Enabled(False)
+Gui.F_Setup.chkDefault.Value(0)
+Gui.F_Setup.frame2.Enabled(False)
+
+Gui.F_Setup.ddlOutput.ClearItems
+Gui.F_Setup.ddlOutput.AddItem("CSV")
+Gui.F_Setup.ddlOutput.AddItem("OUT")
+Gui.F_Setup.ddlOutput.AddItem("TXT")
+
+Gui.F_Setup.ddlDateFormat.ClearItems
+Gui.F_Setup.ddlDateFormat.AddItem("DDMMYY")
+Gui.F_Setup.ddlDateFormat.AddItem("DDMMYYYY")
+Gui.F_Setup.ddlDateFormat.AddItem("DD/MM/YY")
+Gui.F_Setup.ddlDateFormat.AddItem("DD/MM/YYYY")
+Gui.F_Setup.ddlDateFormat.Enabled(False)
+
+Gui.F_Setup.ddlSortCode.ClearItems
+Gui.F_Setup.ddlSortCode.AddItem("NONE")
+Gui.F_Setup.ddlSortCode.AddItem("-")
+Gui.F_Setup.ddlSortCode.AddItem("SPACE")
+Gui.F_Setup.ddlSortCode.Enabled(False)
+
+Gui.F_Setup.GsGCFormat.Visible(False)
+F.Intrinsic.Control.If(V.DataTable.dtFormat.Exists)
+	F.Intrinsic.Control.For(V.Local.i1,V.DataTable.dtFormat.RowCount--,0,-1)
+		F.Data.DataTable.DeleteRow("dtFormat",V.Local.i1)
+		F.Data.DataTable.AcceptChanges("dtFormat")
+	F.Intrinsic.Control.Next(V.Local.i1)
+F.Intrinsic.Control.EndIf
+
+F.Data.DataTable.AddRow("dtFormat","RowNo",1,"FieldLength",0,"Quotation",False,"Leading",False,"Trailing",False)
+Gui.F_Setup.GsGCFormat.Visible(True)
+Program.Sub.cmdNew_Click.End
+
+Program.Sub.Initialize.Start
+'Initialize screen
+Gui.F_Setup.tab1.SetTab(0)
+
+Gui.F_Setup.frame2.Enabled(False)
+Gui.F_Setup.ddlDateFormat.Enabled(False)
+
+Gui.F_Setup.ddlOutput.AddItem("CSV")
+Gui.F_Setup.ddlOutput.AddItem("OUT")
+Gui.F_Setup.ddlOutput.AddItem("TXT")
+
+Gui.F_Setup.ddlDateFormat.AddItem("DDMMYY")
+Gui.F_Setup.ddlDateFormat.AddItem("DDMMYYYY")
+Gui.F_Setup.ddlDateFormat.AddItem("DD/MM/YY")
+Gui.F_Setup.ddlDateFormat.AddItem("DD/MM/YYYY")
+
+Gui.F_Setup.ddlSortCode.AddItem("NONE")
+Gui.F_Setup.ddlSortCode.AddItem("-")
+Gui.F_Setup.ddlSortCode.AddItem("SPACE")
+
+'Export format 
+F.Data.DataTable.Create("dtFormat",True)
+F.Data.DataTable.AddColumn("dtFormat","RowNo","Long")
+F.Data.DataTable.AddColumn("dtFormat","FieldName","String")
+F.Data.DataTable.AddColumn("dtFormat","FieldLength","Long")
+F.Data.DataTable.AddColumn("dtFormat","Quotation","Boolean")
+F.Data.DataTable.AddColumn("dtFormat","Leading","Boolean")
+F.Data.DataTable.AddColumn("dtFormat","Trailing","Boolean")
+F.Data.DataTable.AddColumn("dtFormat","Delete","Long")
+
+F.Data.DataTable.AddRow("dtFormat","RowNo",1,"FieldLength",0,"Quotation",False,"Leading",False,"Trailing",False)
+
+Gui.F_Setup.GsGCFormat.AddGridviewFromDatatable("gvFormat","dtFormat")
+Gui.F_Setup.GsGCFormat.MainView("gvFormat")
+
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","RowNo","HeaderHAlignment","Center")
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","FieldName","HeaderHAlignment","Center")
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","FieldLength","HeaderHAlignment","Center")
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Quotation","HeaderHAlignment","Center")
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Leading","HeaderHAlignment","Center")
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Trailing","HeaderHAlignment","Center")
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Delete","ShowCaption",False)
+
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","RowNo","CellHAlignment","Center")
+
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","RowNo","HeaderFontBold",True)
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","FieldName","HeaderFontBold",True)
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","FieldLength","HeaderFontBold",True)
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Quotation","HeaderFontBold",True)
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Leading","HeaderFontBold",True)
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Trailing","HeaderFontBold",True)
+
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","RowNo","Caption","No.")
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","FieldName","Caption","Field Name")
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","FieldLength","Caption","Field Length")
+
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","RowNo","MinWidth","30")
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","FieldName","MinWidth","110")
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","FieldLength","MinWidth","80")
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Quotation","MinWidth","70")
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Leading","MinWidth","70")
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Trailing","MinWidth","70")
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Delete","MinWidth","90")
+
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","FieldName","AllowEdit",True)
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","FieldLength","AllowEdit",True)
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Quotation","AllowEdit",True)
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Leading","AllowEdit",True)
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Trailing","AllowEdit",True)
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Delete","AllowEdit",False)
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","FieldName","ReadOnly",False)
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","FieldLength","ReadOnly",False)
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Quotation","ReadOnly",False)
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Leading","ReadOnly",False)
+Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Trailing","ReadOnly",False)
+
+Gui.F_Setup.GsGCFormat.ColumnEdit("gvFormat","Delete","EditorButton","Delete")
+Gui.F_Setup.GsGCFormat.ColumnEdit("gvFormat","FieldName","Dropdownlist","[BLANK]*!*Amount*!*Bank Name*!*Bank Account Number*!*Bank IBAN Number*!*Bank Sort Code*!*Batch Number*!*Check Date*!*Senders Name*!*User Field 1*!*User Field 2*!*User Field 3*!*User Field 4*!*User Field 5*!*Vendor Code*!*Vendor Name")
+Program.Sub.Initialize.End
+
+Program.Sub.cmdBrw_Click.Start
+V.Local.iID.Declare
+V.Local.iWidths.Declare
+V.Local.sFilter.Declare
+V.Local.sRet.Declare
+V.Local.sSQL.Declare
+V.Local.sTitles.Declare
+
+F.Intrinsic.String.Split("ID*!*Description*!*File Output","*!*",V.Local.sTitles)
+F.Intrinsic.String.Split("500*!*2000*!*700","*!*",V.Local.iWidths)
+
+F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+F.Intrinsic.UI.Browser("Select a BACS Setup","conx","select id, description, file_output from gab_5458_bacs_opt order by id",V.Local.sTitles,V.Local.iWidths,V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	V.Global.iID.Set(V.Local.sRet(0))
+	
+	Gui.F_Setup.txtBank.Text(V.Local.sRet(1).Trim)
+	Gui.F_Setup.ddlOutput.Text(V.Local.sRet(2))
+	
+	'Load options stored
+	F.Intrinsic.String.Build("select default_flag, dec_separator, lead_zeroes, lead_zeroes_ln, trail_zeroes, trail_zeroes_ln, sort_code_split, sender_name, user_1, user_2, user_3, user_4, user_5, date_format from gab_5458_bacs_opt where id = {0}",V.Global.iID,V.Local.sSQL)
+	F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sSQL)
+	Gui.F_Setup.txtSender.Text(V.ODBC.Conx!rst.FieldValTrim!sender_name)
+	Gui.F_Setup.txtUF1.Text(V.ODBC.Conx!rst.FieldValTrim!user_1)
+	Gui.F_Setup.txtUF2.Text(V.ODBC.Conx!rst.FieldValTrim!user_2)
+	Gui.F_Setup.txtUF3.Text(V.ODBC.Conx!rst.FieldValTrim!user_3)
+	Gui.F_Setup.txtUF4.Text(V.ODBC.Conx!rst.FieldValTrim!user_4)
+	Gui.F_Setup.txtUF5.Text(V.ODBC.Conx!rst.FieldValTrim!user_5)
+	
+	F.Intrinsic.Control.If(V.ODBC.Conx!rst.FieldVal!date_format,=,0)
+		Gui.F_Setup.ddlDateFormat.ClearItems
+		Gui.F_Setup.ddlDateFormat.AddItem("DDMMYY")
+		Gui.F_Setup.ddlDateFormat.AddItem("DDMMYYYY")
+		Gui.F_Setup.ddlDateFormat.AddItem("DD/MM/YY")
+		Gui.F_Setup.ddlDateFormat.AddItem("DD/MM/YYYY")
+		Gui.F_Setup.ddlDateFormat.Enabled(False)
+	F.Intrinsic.Control.Else
+		Gui.F_Setup.ddlDateFormat.Enabled(True)
+		F.Intrinsic.Control.If(V.ODBC.Conx!rst.FieldVal!date_format,=,1)
+			Gui.F_Setup.ddlDateFormat.Text("DDMMYY")
+		F.Intrinsic.Control.ElseIf(V.ODBC.Conx!rst.FieldVal!date_format,=,2)
+			Gui.F_Setup.ddlDateFormat.Text("DDMMYYYY")
+		F.Intrinsic.Control.ElseIf(V.ODBC.Conx!rst.FieldVal!date_format,=,3)
+			Gui.F_Setup.ddlDateFormat.Text("DD/MM/YY")
+		F.Intrinsic.Control.ElseIf(V.ODBC.Conx!rst.FieldVal!date_format,=,4)
+			Gui.F_Setup.ddlDateFormat.Text("DD/MM/YYYY")
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Control.If(V.ODBC.Conx!rst.FieldVal!sort_code_split,=,0)
+		Gui.F_Setup.ddlSortCode.ClearItems
+		Gui.F_Setup.ddlSortCode.AddItem("NONE")
+		Gui.F_Setup.ddlSortCode.AddItem("-")
+		Gui.F_Setup.ddlSortCode.AddItem("SPACE")
+		Gui.F_Setup.ddlSortCode.Enabled(False)
+	F.Intrinsic.Control.Else
+		Gui.F_Setup.ddlSortCode.Enabled(True)
+		F.Intrinsic.Control.If(V.ODBC.Conx!rst.FieldVal!sort_code_split,=,1)
+			Gui.F_Setup.ddlSortCode.Text("NONE")
+		F.Intrinsic.Control.ElseIf(V.ODBC.Conx!rst.FieldVal!sort_code_split,=,2)
+			Gui.F_Setup.ddlSortCode.Text("-")
+		F.Intrinsic.Control.ElseIf(V.ODBC.Conx!rst.FieldVal!sort_code_split,=,3)
+			Gui.F_Setup.ddlSortCode.Text("SPACE")
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+	
+	Gui.F_Setup.chkDefault.Value(V.ODBC.Conx!rst.FieldVal!default_flag)
+	Gui.F_Setup.chkDecimal.Value(V.ODBC.Conx!rst.FieldVal!dec_separator)
+	F.Intrinsic.Control.If(V.ODBC.Conx!rst.FieldVal!dec_separator,=,1)
+'		Gui.F_Setup.frame1.Enabled(True)
+		Gui.F_Setup.chkLeading.Value(V.ODBC.Conx!rst.FieldVal!lead_zeroes)
+		F.Intrinsic.Control.If(V.ODBC.Conx!rst.FieldVal!lead_zeroes,=,1)
+			Gui.F_Setup.txtLeading.Text(V.ODBC.Conx!rst.FieldVal!lead_zeroes_ln)
+			Gui.F_Setup.txtLeading.Enabled(True)
+		F.Intrinsic.Control.Else
+			Gui.F_Setup.txtLeading.Text("")
+			Gui.F_Setup.txtLeading.Enabled(False)
+		F.Intrinsic.Control.EndIf
+		Gui.F_Setup.chkTrailing.Value(V.ODBC.Conx!rst.FieldVal!trail_zeroes)
+		F.Intrinsic.Control.If(V.ODBC.Conx!rst.FieldVal!trail_zeroes,=,1)
+			Gui.F_Setup.txtTrailing.Text(V.ODBC.Conx!rst.FieldVal!trail_zeroes_ln)
+			Gui.F_Setup.txtTrailing.Enabled(True)
+		F.Intrinsic.Control.Else
+			Gui.F_Setup.txtTrailing.Text("")
+			Gui.F_Setup.txtTrailing.Enabled(False)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Else
+'		Gui.F_Setup.frame1.Enabled(False)
+		Gui.F_Setup.chkLeading.Value(0)
+		Gui.F_Setup.txtLeading.Text("")
+		Gui.F_Setup.chkTrailing.Value(0)
+		Gui.F_Setup.txtTrailing.Text("")
+	F.Intrinsic.Control.EndIf
+	F.ODBC.Conx!rst.Close
+	
+	Gui.F_Setup.GsGCFormat.Visible(False)
+	
+	'Load file format
+	F.Intrinsic.Control.If(V.DataTable.dtFormat.Exists)
+		F.Data.DataTable.Close("dtFormat")
+	F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.String.Build("select bacs_row as RowNo, case bacs_field when 0 then '[BLANK]' when 1 then 'Amount' when 2 then 'Bank Name' when 3 then 'Bank Account Number' when 4 then 'Bank IBAN Number' when 5 then 'Bank Sort Code' when 6 then 'Batch Number' when 7 then 'Check Date' when 8 then 'Senders Name' when 9 then 'User Field 1' when 10 then 'User Field 2' when 11 then 'User Field 3' when 12 then 'User Field 4' when 13 then 'User Field 5' when 14 then 'Vendor Code' when 15 then 'Vendor Name' end as FieldName, bacs_field_ln as FieldLength, quotation_flag as Quotation, leading_space as Leading, trailing_space as Trailing from gab_5458_bacs_frmt where bacs_id = {0}",V.Global.iID,V.Local.sSQL)
+	F.Data.DataTable.CreateFromSQL("dtFormat","conx",V.Local.sSQL,True)
+	F.Data.DataTable.AddColumn("dtFormat","Delete","Long")
+	
+	F.Intrinsic.Math.Add(V.DataTable.dtFormat.RowCount,1,V.Local.iID)
+	F.Data.DataTable.AddRow("dtFormat","RowNo",V.Local.iID,"FieldLength",0,"Quotation",False,"Leading",False,"Trailing",False)
+
+	Gui.F_Setup.GsGCFormat.AddGridviewFromDatatable("gvFormat","dtFormat")
+	Gui.F_Setup.GsGCFormat.MainView("gvFormat")
+	
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","RowNo","HeaderHAlignment","Center")
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","FieldName","HeaderHAlignment","Center")
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","FieldLength","HeaderHAlignment","Center")
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Quotation","HeaderHAlignment","Center")
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Leading","HeaderHAlignment","Center")
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Trailing","HeaderHAlignment","Center")
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Delete","ShowCaption",False)
+	
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","RowNo","CellHAlignment","Center")
+	
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","RowNo","HeaderFontBold",True)
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","FieldName","HeaderFontBold",True)
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","FieldLength","HeaderFontBold",True)
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Quotation","HeaderFontBold",True)
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Leading","HeaderFontBold",True)
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Trailing","HeaderFontBold",True)
+	
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","RowNo","Caption","No.")
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","FieldName","Caption","Field Name")
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","FieldLength","Caption","Field Length")
+	
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","RowNo","MinWidth","30")
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","FieldName","MinWidth","110")
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","FieldLength","MinWidth","80")
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Quotation","MinWidth","70")
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Leading","MinWidth","70")
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Trailing","MinWidth","70")
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Delete","MinWidth","90")
+	
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","FieldName","AllowEdit",True)
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","FieldLength","AllowEdit",True)
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Quotation","AllowEdit",True)
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Leading","AllowEdit",True)
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Trailing","AllowEdit",True)
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Delete","AllowEdit",False)
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","FieldName","ReadOnly",False)
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","FieldLength","ReadOnly",False)
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Quotation","ReadOnly",False)
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Leading","ReadOnly",False)
+	Gui.F_Setup.GsGCFormat.SetColumnProperty("gvFormat","Trailing","ReadOnly",False)
+	
+	Gui.F_Setup.GsGCFormat.ColumnEdit("gvFormat","Delete","EditorButton","Delete")
+	Gui.F_Setup.GsGCFormat.ColumnEdit("gvFormat","FieldName","Dropdownlist","[BLANK]*!*Amount*!*Bank Name*!*Bank Account Number*!*Bank IBAN Number*!*Bank Sort Code*!*Batch Number*!*Check Date*!*Senders Name*!*User Field 1*!*User Field 2*!*User Field 3*!*User Field 4*!*User Field 5*!*Vendor Code*!*Vendor Name")
+	
+	Gui.F_Setup.GsGCFormat.Visible(True)
+	
+	F.Data.DataTable.Select("dtFormat","FieldName = 'Amount'",V.Local.sRet)
+	F.Intrinsic.Control.If(V.Local.sRet,<>,"***NORETURN***")
+		Gui.F_Setup.frame2.Enabled(True)
+		Gui.F_Setup.txtMaxChar.Text(V.DataTable.dtFormat(V.Local.sRet).FieldLength!FieldVal)
+	F.Intrinsic.Control.Else
+		Gui.F_Setup.frame2.Enabled(False)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+Program.Sub.cmdBrw_Click.End
+
+Program.Sub.chkDecimal_Click.Start
+'Action when decimal separator checkbox is clicked
+F.Intrinsic.Control.If(V.Screen.F_Setup!chkDecimal.Value,=,0)
+	Gui.F_Setup.frame1.Enabled(True)
+F.Intrinsic.Control.Else
+	Gui.F_Setup.frame1.Enabled(False)
+	Gui.F_Setup.chkLeading.Value(0)
+	Gui.F_Setup.txtLeading.Text("")
+	Gui.F_Setup.chkTrailing.Value(0)
+	Gui.F_Setup.txtTrailing.Text("")
+F.Intrinsic.Control.EndIf
+Program.Sub.chkDecimal_Click.End
+
+Program.Sub.chkLeading_Click.Start
+'Action when leading zeroes checkbox is clicked
+F.Intrinsic.Control.If(V.Screen.F_Setup!chkLeading.Value,=,1)
+	Gui.F_Setup.txtLeading.Enabled(True)
+	Gui.F_Setup.chkTrailing.Value(0)
+	Gui.F_Setup.chkTrailing.Enabled(False)
+	Gui.F_Setup.txtTrailing.Text("")
+	Gui.F_Setup.txtTrailing.Enabled(False)
+F.Intrinsic.Control.Else
+	Gui.F_Setup.txtLeading.Enabled(False)
+	Gui.F_Setup.txtLeading.Text("")
+	Gui.F_Setup.chkTrailing.Enabled(True)
+F.Intrinsic.Control.EndIf
+Program.Sub.chkLeading_Click.End
+
+Program.Sub.chkTrailing_Click.Start
+'Action when trailing zeroes checkbox is clicked
+F.Intrinsic.Control.If(V.Screen.F_Setup!chkTrailing.Value,=,1)
+	Gui.F_Setup.txtTrailing.Enabled(True)
+	Gui.F_Setup.chkLeading.Value(0)
+	Gui.F_Setup.chkLeading.Enabled(False)
+	Gui.F_Setup.txtLeading.Text("")
+	Gui.F_Setup.txtLeading.Enabled(False)
+F.Intrinsic.Control.Else
+	Gui.F_Setup.txtTrailing.Enabled(False)
+	Gui.F_Setup.txtTrailing.Text("")
+	Gui.F_Setup.chkLeading.Enabled(True)
+F.Intrinsic.Control.EndIf
+Program.Sub.chkTrailing_Click.End
+
+Program.Sub.GsGCFormat_CellValueChanged.Start
+V.Local.bValue.Declare
+V.Local.iID.Declare
+V.Local.sFilter.Declare
+V.Local.sRet.Declare
+V.Local.sValue.Declare
+
+'Grid cell value changed per column
+F.Intrinsic.Control.If(V.Args.Column,=,"FieldName")
+	V.Local.sValue.Set(V.Args.Value)
+	F.Intrinsic.Control.If(V.Local.sValue.Trim,<>,"")
+		'Check if field name has been selected previously
+		F.Intrinsic.String.Build("FieldName = '{0}'",V.Local.sValue.Trim,V.Local.sFilter)
+		F.Data.DataTable.Select("dtFormat",V.Local.sFilter,V.Local.sRet)
+		F.Intrinsic.Control.If(V.Local.sRet,=,"***NORETURN***")
+			F.Intrinsic.Control.CallSub(CheckField,"Description",V.Local.sValue.Trim,"Length",V.DataTable.dtFormat(V.Args.RowIndex).FieldLength!FieldVal)
+		F.Intrinsic.Control.Else
+			F.Intrinsic.Control.If(V.Local.sValue.Trim,=,"[BLANK]")
+				F.Intrinsic.Control.CallSub(CheckField,"Description",V.Local.sValue.Trim,"Length",V.DataTable.dtFormat(V.Args.RowIndex).FieldLength!FieldVal)
+			F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.ElseIf(V.Args.Column,=,"FieldLength")
+	F.Intrinsic.Control.If(V.Args.Value,<>,0)
+		F.Intrinsic.Control.CallSub(CheckField,"Description",V.DataTable.dtFormat(V.Args.RowIndex).FieldName!FieldValTrim,"Length",V.Args.Value)
+		F.Intrinsic.Control.If(V.DataTable.dtFormat(V.Args.RowIndex).FieldName!FieldValTrim,=,"Amount")
+			Gui.F_Setup.txtMaxChar.Text(V.Args.Value)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.ElseIf(V.Args.Column,=,"Leading")
+	V.Local.bValue.Set(V.Args.Value)
+	F.Intrinsic.Control.If(V.Local.bValue)
+		F.Data.DataTable.SetValue("dtFormat",V.Args.RowIndex,"Trailing",False)
+		F.Data.DataTable.AcceptChanges("dtFormat")
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.ElseIf(V.Args.Column,=,"Trailing")
+	V.Local.bValue.Set(V.Args.Value)
+	F.Intrinsic.Control.If(V.Local.bValue)
+		F.Data.DataTable.SetValue("dtFormat",V.Args.RowIndex,"Leading",False)
+		F.Data.DataTable.AcceptChanges("dtFormat")
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+Program.Sub.GsGCFormat_CellValueChanged.End
+
+Program.Sub.GsGCFormat_RowCellClick.Start
+V.Local.i1.Declare
+V.Local.i2.Declare
+V.Local.sDescription.Declare
+
+F.Intrinsic.Control.If(V.Args.Column,=,"Delete")
+	V.Local.sDescription.Set(V.DataTable.dtFormat(V.Args.RowIndex).FieldName!FieldValTrim)
+	F.Intrinsic.Control.If(V.Local.sDescription.Trim,<>,"")
+		F.Intrinsic.Control.If(V.Local.sDescription.Trim,=,"Check Date")
+			Gui.F_Setup.ddlDateFormat.ClearItems
+			Gui.F_Setup.ddlDateFormat.AddItem("DDMMYY")
+			Gui.F_Setup.ddlDateFormat.AddItem("DDMMYYYY")
+			Gui.F_Setup.ddlDateFormat.AddItem("DD/MM/YY")
+			Gui.F_Setup.ddlDateFormat.AddItem("DD/MM/YYYY")
+			Gui.F_Setup.ddlDateFormat.Enabled(False)
+		F.Intrinsic.Control.ElseIf(V.Local.sDescription.Trim,=,"Amount")
+			Gui.F_Setup.chkDecimal.Value(0)
+			Gui.F_Setup.chkLeading.Value(0)
+			Gui.F_Setup.chkTrailing.Value(0)
+			Gui.F_Setup.txtMaxChar.Text("")
+			Gui.F_Setup.txtLeading.Text("")
+			Gui.F_Setup.txtTrailing.Text("")
+			Gui.F_Setup.frame2.Enabled(False)
+		F.Intrinsic.Control.ElseIf(V.Local.sDescription.Trim,=,"Bank Sort Code")
+			Gui.F_Setup.ddlSortCode.ClearItems
+			Gui.F_Setup.ddlSortCode.AddItem("NONE")
+			Gui.F_Setup.ddlSortCode.AddItem("-")
+			Gui.F_Setup.ddlSortCode.AddItem("SPACE")
+			Gui.F_Setup.ddlSortCode.Enabled(False)
+		F.Intrinsic.Control.EndIf
+		F.Data.DataTable.DeleteRow("dtFormat",V.Args.RowIndex)
+		F.Data.DataTable.AcceptChanges("dtFormat")
+		
+		F.Intrinsic.Control.For(V.Local.i1,0,V.DataTable.dtFormat.RowCount--,1)
+			F.Intrinsic.Math.Add(V.Local.i1,1,V.Local.i2)
+			F.Data.DataTable.SetValue("dtFormat",V.Local.i1,"RowNo",V.Local.i2)
+		F.Intrinsic.Control.Next(V.Local.i1)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+Program.Sub.GsGCFormat_RowCellClick.End
+
+Program.Sub.cmdSave_Click.Start
+V.Local.i1.Declare
+V.Local.i2.Declare
+V.Local.iDateFormat.Declare
+V.Local.iFieldID.Declare
+V.Local.iLead.Declare
+V.Local.iMaxChar.Declare
+V.Local.iQuotation.Declare
+V.Local.iRowCount.Declare
+V.Local.iSortCode.Declare
+V.Local.iTrail.Declare
+V.Local.sDateFormat.Declare
+V.Local.sDescription.Declare
+V.Local.sOutput.Declare
+V.Local.sRet.Declare
+V.Local.sSortCode.Declare
+V.Local.sSQL.Declare
+
+'Check for input
+V.Local.sDescription.Set(V.Screen.F_Setup!txtBank.Text)
+F.Intrinsic.Control.If(V.Local.sDescription.Trim,=,"")
+	F.Intrinsic.UI.Msgbox("Bank Name must not be blank")
+	Gui.F_Setup.txtBank.SetFocus
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+V.Local.sOutput.Set(V.Screen.F_Setup!ddlOutput.Text)
+F.Intrinsic.Control.If(V.Local.sOutput.Trim,=,"")
+	F.Intrinsic.UI.Msgbox("File Output must not be blank")
+	Gui.F_Setup.tab1.SetTab(1)
+	Gui.F_Setup.ddlOutput.SetFocus
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+'Check if there is at least 1 export field
+F.Intrinsic.Control.If(V.DataTable.dtFormat.RowCount,=,1)
+	F.Intrinsic.Control.If(V.DataTable.dtFormat(0).FieldName!FieldValTrim,=,"")
+		F.Intrinsic.Control.If(V.DataTable.dtFormat(0).FieldLength!FieldVal,=,0)
+			F.Intrinsic.UI.Msgbox("Export file format must not be blank")
+			Gui.F_Setup.tab1.SetTab(0)
+			F.Intrinsic.Control.ExitSub
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Else
+	'Check for amount, must exist in the grid
+	F.Data.DataTable.Select("dtFormat","FieldName = 'Amount'",V.Local.sRet)
+	F.Intrinsic.Control.If(V.Local.sRet,=,"***NORETURN***")
+		F.Intrinsic.UI.Msgbox("Amount must be selected in the export format")
+		Gui.F_Setup.tab1.SetTab(0)
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.Else
+		'Check for amount maximum character
+		V.Local.iMaxChar.Set(V.Screen.F_Setup!txtMaxChar.Text)
+		F.Intrinsic.Control.If(V.Local.iMaxChar,=,0)
+			F.Intrinsic.UI.Msgbox("Maximum character must not be zero")
+			Gui.F_Setup.tab1.SetTab(1)
+			Gui.F_Setup.txtMaxChar.SetFocus
+			F.Intrinsic.Control.ExitSub
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+	
+	'Check for check date format, if selected
+	F.Data.DataTable.Select("dtFormat","FieldName = 'Check Date'",V.Local.sRet)
+	F.Intrinsic.Control.If(V.Local.sRet,<>,"***NORETURN***")
+		V.Local.sDateFormat.Set(V.Screen.F_Setup!ddlDateFormat.Text)
+		F.Intrinsic.Control.If(V.Local.sDateFormat.Trim,=,"")
+			F.Intrinsic.UI.Msgbox("Check date format must be selected")
+			Gui.F_Setup.tab1.SetTab(1)
+			Gui.F_Setup.ddlDateFormat.SetFocus
+			F.Intrinsic.Control.ExitSub
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+	
+	'Check for bank sort code separator
+	F.Data.DataTable.Select("dtFormat","FieldName = 'Bank Sort Code'",V.Local.sRet)
+	F.Intrinsic.Control.If(V.Local.sRet,<>,"***NORETURN***")
+		V.Local.sSortCode.Set(V.Screen.F_Setup!ddlSortCode.Text)
+		F.Intrinsic.Control.If(V.Local.sSortCode.Trim,=,"")
+			F.Intrinsic.UI.Msgbox("Bank Sort Code Separator must be selected")
+			Gui.F_Setup.tab1.SetTab(1)
+			Gui.F_Setup.ddlSortCode.SetFocus
+			F.Intrinsic.Control.ExitSub
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+	
+	'Check for destination bank account number
+	F.Data.DataTable.Select("dtFormat","FieldName = 'Bank Account Number'",V.Local.sRet)
+	F.Intrinsic.Control.If(V.Local.sRet,=,"***NORETURN***")
+		F.Intrinsic.UI.Msgbox("Bank Account Number must be selected in the export format")
+		Gui.F_Setup.tab1.SetTab(0)
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+'Check date format
+V.Local.sDateFormat.Set(V.Screen.F_Setup!ddlDateFormat.Text)
+F.Intrinsic.Control.If(V.Local.sDateFormat.Trim,=,"")
+	V.Local.iDateFormat.Set(0)
+F.Intrinsic.Control.Else
+	F.Intrinsic.Control.If(V.Local.sDateFormat.Trim,=,"DDMMYY")
+		V.Local.iDateFormat.Set(1)
+	F.Intrinsic.Control.ElseIf(V.Local.sDateFormat.Trim,=,"DDMMYYYY")
+		V.Local.iDateFormat.Set(2)
+	F.Intrinsic.Control.ElseIf(V.Local.sDateFormat.Trim,=,"DD/MM/YY")
+		V.Local.iDateFormat.Set(3)
+	F.Intrinsic.Control.ElseIf(V.Local.sDateFormat.Trim,=,"DD/MM/YYYY")
+		V.Local.iDateFormat.Set(4)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+'Bank sort code separator
+V.Local.sSortCode.Set(V.Screen.F_Setup!ddlSortCode.Text)
+F.Intrinsic.Control.If(V.Local.sSortCode.Trim,=,"")
+	V.Local.iSortCode.Set(0)
+F.Intrinsic.Control.Else
+	F.Intrinsic.Control.If(V.Local.sSortCode.Trim,=,"NONE")
+		V.Local.iSortCode.Set(1)
+	F.Intrinsic.Control.ElseIf(V.Local.sSortCode.Trim,=,"-")
+		V.Local.iSortCode.Set(2)
+	F.Intrinsic.Control.ElseIf(V.Local.sSortCode.Trim,=,"SPACE")
+		V.Local.iSortCode.Set(3)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+'Amount numeric format
+'F.Intrinsic.Control.If(V.Screen.F_Setup!chkDecimal.Value,=,0)
+F.Intrinsic.Control.If(V.Screen.F_Setup!chkLeading.Value,=,1)
+	V.Local.iLead.Set(V.Screen.F_Setup!txtLeading.Text)
+F.Intrinsic.Control.Else
+	V.Local.iLead.Set(0)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Screen.F_Setup!chkTrailing.Value,=,1)
+	V.Local.iTrail.Set(V.Screen.F_Setup!txtTrailing.Text)
+F.Intrinsic.Control.Else
+	V.Local.iTrail.Set(0)
+F.Intrinsic.Control.EndIf
+
+V.Local.iMaxChar.Set(V.Screen.F_Setup!txtMaxChar.Text)
+F.Intrinsic.Math.Add(V.Local.iMaxChar,0,V.Local.iMaxChar)
+'F.Intrinsic.Control.Else
+'	V.Local.iLead.Set(0)
+'	V.Local.iTrail.Set(0)
+'	V.Local.iMaxChar.Set(0)
+'F.Intrinsic.Control.EndIf
+
+'If default is selected, remove default from the current one
+F.Intrinsic.Control.If(V.Screen.F_Setup!chkDefault.Value,=,1)
+	F.ODBC.Connection!Conx.Execute("update gab_5458_bacs_opt set default_flag = 0 where default_flag = 1")
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Global.iID,=,0)
+	'Check if title has been used before
+	F.Intrinsic.String.Build("select id from gab_5458_bacs_opt where description = '{0}'",V.Local.sDescription.Trim,V.Local.sSQL)
+	F.ODBC.Connection!Conx.OpenLocalRecordsetRO("rst",V.Local.sSQL)
+	F.Intrinsic.Control.If(V.ODBC.Conx!rst.EOF,=,False)
+		F.ODBC.Conx!rst.Close
+		F.Intrinsic.UI.Msgbox("Bank Name is already used")
+		Gui.F_Setup.txtBank.SetFocus
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.Else
+		F.ODBC.Conx!rst.Close
+	F.Intrinsic.Control.EndIf
+	
+	'New
+	F.ODBC.Connection!Conx.ExecuteAndReturn("select max(id) from gab_5458_bacs_opt",V.Global.iID)
+	F.Intrinsic.Math.Add(V.Global.iID,1,V.Global.iID)
+	
+	F.Intrinsic.String.Build("insert into gab_5458_bacs_opt(id,description,file_output,default_flag,dec_separator,lead_zeroes,lead_zeroes_ln,trail_zeroes,trail_zeroes_ln,sender_name,user_1,user_2,user_3,user_4,user_5,date_format,sort_code_split) values({0},'{1}','{2}',{3},{4},{5},{6},{7},{8},'{9}','{10}','{11}','{12}','{13}','{14}',{15},{16});",V.Global.iID,V.Local.sDescription.Trim,V.Local.sOutput.Trim,V.Screen.F_Setup!chkDefault.Value,V.Screen.F_Setup!chkDecimal.Value,V.Screen.F_Setup!chkLeading.Value,V.Local.iLead,V.Screen.F_Setup!chkTrailing.Value,V.Local.iTrail,V.Screen.F_Setup!txtSender.Text,V.Screen.F_Setup!txtUF1.Text,V.Screen.F_Setup!txtUF2.Text,V.Screen.F_Setup!txtUF3.Text,V.Screen.F_Setup!txtUF4.Text,V.Screen.F_Setup!txtUF5.Text,V.Local.iDateFormat,V.Local.iSortCode,V.Local.sSQL)
+	F.ODBC.Connection!Conx.Execute(V.Local.sSQL)
+F.Intrinsic.Control.Else
+	'Edit
+	F.Intrinsic.String.Build("update gab_5458_bacs_opt set description = '{1}', file_output = '{2}', default_flag = {3}, dec_separator = {4}, lead_zeroes = {5}, lead_zeroes_ln = {6}, trail_zeroes = {7}, trail_zeroes_ln = {8}, sender_name = '{9}', user_1 = '{10}', user_2 = '{11}', user_3 = '{12}', user_4 = '{13}', user_5 = '{14}', date_format = {15}, sort_code_split = {16} where id = {0}",V.Global.iID,V.Local.sDescription.Trim,V.Local.sOutput.Trim,V.Screen.F_Setup!chkDefault.Value,V.Screen.F_Setup!chkDecimal.Value,V.Screen.F_Setup!chkLeading.Value,V.Local.iLead,V.Screen.F_Setup!chkTrailing.Value,V.Local.iTrail,V.Screen.F_Setup!txtSender.Text,V.Screen.F_Setup!txtUF1.Text,V.Screen.F_Setup!txtUF2.Text,V.Screen.F_Setup!txtUF3.Text,V.Screen.F_Setup!txtUF4.Text,V.Screen.F_Setup!txtUF5.Text,V.Local.iDateFormat,V.Local.iSortCode,V.Local.sSQL)
+	F.ODBC.Connection!Conx.Execute(V.Local.sSQL)
+	
+	F.Intrinsic.String.Build("delete from gab_5458_bacs_frmt where bacs_id = {0}",V.Global.iID,V.Local.sSQL)
+	F.ODBC.Connection!Conx.Execute(V.Local.sSQL)
+F.Intrinsic.Control.EndIf
+
+'Saving BACS export format set on the grid
+F.Intrinsic.Control.If(V.DataTable.dtFormat.RowCount,=,16)
+	V.Local.iRowCount.Set(V.DataTable.dtFormat.RowCount--)
+F.Intrinsic.Control.Else
+	F.Intrinsic.Math.Sub(V.DataTable.dtFormat.RowCount--,1,V.Local.iRowCount)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.For(V.Local.i1,0,V.Local.iRowCount,1)
+	F.Intrinsic.Control.If(V.DataTable.dtFormat(V.Local.i1).Quotation!FieldVal)
+		V.Local.iQuotation.Set(1)
+	F.Intrinsic.Control.Else
+		V.Local.iQuotation.Set(0)
+	F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Control.If(V.DataTable.dtFormat(V.Local.i1).Leading!FieldVal)
+		V.Local.iLead.Set(1)
+	F.Intrinsic.Control.Else
+		V.Local.iLead.Set(0)
+	F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Control.If(V.DataTable.dtFormat(V.Local.i1).Trailing!FieldVal)
+		V.Local.iTrail.Set(1)
+	F.Intrinsic.Control.Else
+		V.Local.iTrail.Set(0)
+	F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Control.If(V.DataTable.dtFormat(V.Local.i1).FieldName!FieldValTrim,=,"[BLANK]")
+		V.Local.iFieldID.Set(0)
+	F.Intrinsic.Control.ElseIf(V.DataTable.dtFormat(V.Local.i1).FieldName!FieldValTrim,=,"Amount")
+		V.Local.iFieldID.Set(1)
+	F.Intrinsic.Control.ElseIf(V.DataTable.dtFormat(V.Local.i1).FieldName!FieldValTrim,=,"Bank Name")
+		V.Local.iFieldID.Set(2)
+	F.Intrinsic.Control.ElseIf(V.DataTable.dtFormat(V.Local.i1).FieldName!FieldValTrim,=,"Bank Account Number")
+		V.Local.iFieldID.Set(3)
+	F.Intrinsic.Control.ElseIf(V.DataTable.dtFormat(V.Local.i1).FieldName!FieldValTrim,=,"Bank IBAN Number")
+		V.Local.iFieldID.Set(4)
+	F.Intrinsic.Control.ElseIf(V.DataTable.dtFormat(V.Local.i1).FieldName!FieldValTrim,=,"Bank Sort Code")
+		V.Local.iFieldID.Set(5)
+	F.Intrinsic.Control.ElseIf(V.DataTable.dtFormat(V.Local.i1).FieldName!FieldValTrim,=,"Batch Number")
+		V.Local.iFieldID.Set(6)
+	F.Intrinsic.Control.ElseIf(V.DataTable.dtFormat(V.Local.i1).FieldName!FieldValTrim,=,"Check Date")
+		V.Local.iFieldID.Set(7)
+	F.Intrinsic.Control.ElseIf(V.DataTable.dtFormat(V.Local.i1).FieldName!FieldValTrim,=,"Senders Name")
+		V.Local.iFieldID.Set(8)
+	F.Intrinsic.Control.ElseIf(V.DataTable.dtFormat(V.Local.i1).FieldName!FieldValTrim,=,"User Field 1")
+		V.Local.iFieldID.Set(9)
+	F.Intrinsic.Control.ElseIf(V.DataTable.dtFormat(V.Local.i1).FieldName!FieldValTrim,=,"User Field 2")
+		V.Local.iFieldID.Set(10)
+	F.Intrinsic.Control.ElseIf(V.DataTable.dtFormat(V.Local.i1).FieldName!FieldValTrim,=,"User Field 3")
+		V.Local.iFieldID.Set(11)
+	F.Intrinsic.Control.ElseIf(V.DataTable.dtFormat(V.Local.i1).FieldName!FieldValTrim,=,"User Field 4")
+		V.Local.iFieldID.Set(12)
+	F.Intrinsic.Control.ElseIf(V.DataTable.dtFormat(V.Local.i1).FieldName!FieldValTrim,=,"User Field 5")
+		V.Local.iFieldID.Set(13)
+	F.Intrinsic.Control.ElseIf(V.DataTable.dtFormat(V.Local.i1).FieldName!FieldValTrim,=,"Vendor Code")
+		V.Local.iFieldID.Set(14)
+	F.Intrinsic.Control.ElseIf(V.DataTable.dtFormat(V.Local.i1).FieldName!FieldValTrim,=,"Vendor Name")
+		V.Local.iFieldID.Set(15)
+	F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Math.Add(V.Local.i1,1,V.Local.i2)
+	F.Intrinsic.String.Build("insert into gab_5458_bacs_frmt(bacs_id,bacs_row,bacs_field,bacs_field_ln,quotation_flag,leading_space,trailing_space) values({0},{1},{2},{3},{4},{5},{6});",V.Global.iID,V.Local.i2,V.Local.iFieldID,V.DataTable.dtFormat(V.Local.i1).FieldLength!FieldVal,V.Local.iQuotation,V.Local.iLead,V.Local.iTrail,V.Local.sSQL)
+	F.ODBC.Connection!Conx.Execute(V.Local.sSQL)
+F.Intrinsic.Control.Next(V.Local.i1)
+
+F.Intrinsic.UI.Msgbox("Setup is saved")
+Program.Sub.cmdSave_Click.End
+
+Program.Sub.CheckField.Start
+V.Local.iID.Declare
+V.Local.sRet.Declare
+
+'If fieldname is not blank, fieldlength is not zero, rows are less than 16, last fieldname is not blank, last fieldlength is not zero
+F.Intrinsic.Control.If(V.Args.Description.Trim,<>,"")
+	F.Intrinsic.Control.If(V.Args.Description.Trim,=,"Amount")
+		F.Intrinsic.Control.If(V.Args.Length,<>,0)
+			F.Intrinsic.Control.If(V.DataTable.dtFormat.RowCount,<,16)
+				F.Intrinsic.Control.If(V.DataTable.dtFormat(V.DataTable.dtFormat.RowCount--).FieldName!FieldValTrim,<>,"")
+					F.Intrinsic.Math.Add(V.DataTable.dtFormat.RowCount,1,V.Local.iID)
+					F.Data.DataTable.AddRow("dtFormat","RowNo",V.Local.iID,"FieldLength",0,"Quotation",False,"Leading",False,"Trailing",False)
+				F.Intrinsic.Control.EndIf
+			F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Else
+		F.Intrinsic.Control.If(V.DataTable.dtFormat.RowCount,<,16)
+			F.Intrinsic.Control.If(V.DataTable.dtFormat(V.DataTable.dtFormat.RowCount--).FieldName!FieldValTrim,<>,"")
+				F.Intrinsic.Math.Add(V.DataTable.dtFormat.RowCount,1,V.Local.iID)
+				F.Data.DataTable.AddRow("dtFormat","RowNo",V.Local.iID,"FieldLength",0,"Quotation",False,"Leading",False,"Trailing",False)
+			F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.EndIf
+		
+'		F.Intrinsic.Control.If(V.Args.Description.Trim,=,"Check Date")
+'			Gui.F_Setup.ddlDateFormat.Enabled(True)
+'		F.Intrinsic.Control.ElseIf(V.Args.Description.Trim,=,"Bank Sort Code")
+'			Gui.F_Setup.ddlSortCode.Enabled(True)
+'		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+	
+	F.Data.DataTable.AcceptChanges("dtFormat")
+	
+	F.Data.DataTable.Select("dtFormat","FieldName = 'Amount'",V.Local.sRet)
+	F.Intrinsic.Control.If(V.Local.sRet,=,"***NORETURN***")
+		F.Intrinsic.Control.If(V.Args.Description.Trim,=,"Amount")
+			Gui.F_Setup.frame2.Enabled(True)
+		F.Intrinsic.Control.Else
+			Gui.F_Setup.frame2.Enabled(False)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Else
+		Gui.F_Setup.frame2.Enabled(True)
+	F.Intrinsic.Control.EndIf
+	
+	F.Data.DataTable.Select("dtFormat","FieldName = 'Check Date'",V.Local.sRet)
+	F.Intrinsic.Control.If(V.Local.sRet,=,"***NORETURN***")
+		F.Intrinsic.Control.If(V.Args.Description.Trim,=,"Check Date")
+			Gui.F_Setup.ddlDateFormat.Enabled(True)
+		F.Intrinsic.Control.Else
+			Gui.F_Setup.ddlDateFormat.Enabled(False)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Else
+		Gui.F_Setup.ddlDateFormat.Enabled(True)
+	F.Intrinsic.Control.EndIf
+	
+	F.Data.DataTable.Select("dtFormat","FieldName = 'Bank Sort Code'",V.Local.sRet)
+	F.Intrinsic.Control.If(V.Local.sRet,=,"***NORETURN***")
+		F.Intrinsic.Control.If(V.Args.Description.Trim,=,"Bank Sort Code")
+			Gui.F_Setup.ddlSortCode.Enabled(True)
+		F.Intrinsic.Control.Else
+			Gui.F_Setup.ddlSortCode.Enabled(False)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Else
+		Gui.F_Setup.ddlSortCode.Enabled(True)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+Program.Sub.CheckField.End
+
+Program.Sub.cmdDelete_Click.Start
+V.Local.iRet.Declare
+V.Local.sSQL.Declare
+
+F.Intrinsic.UI.Msgbox("Do you want to delete this BACS setup?","",4,V.Local.iRet)
+F.Intrinsic.Control.If(V.Local.iRet,=,6)
+	F.Intrinsic.String.Build("delete from gab_5458_bacs_opt where id = {0}",V.Global.iID,V.Local.sSQL)
+	F.ODBC.Connection!Conx.Execute(V.Local.sSQL)
+	
+	F.Intrinsic.String.Build("delete from gab_5458_bacs_frmt where bacs_id = {0}",V.Global.iID,V.Local.sSQL)
+	F.ODBC.Connection!Conx.Execute(V.Local.sSQL)
+	
+	F.Intrinsic.Control.CallSub(cmdNew_Click)
+F.Intrinsic.Control.EndIf
+Program.Sub.cmdDelete_Click.End
+
+Program.Sub.txtMaxChar_LostFocus.Start
+V.Local.iMaxChar.Declare
+V.Local.sFilter.Declare
+V.Local.sRet.Declare
+
+V.Local.iMaxChar.Set(V.Screen.F_Setup!txtMaxChar.Text)
+F.Data.DataTable.Select("dtFormat","FieldName = 'Amount'",V.Local.sRet)
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***NORETURN***")
+	F.Data.DataTable.SetValue("dtFormat",V.Local.sRet,"FieldLength",V.Local.iMaxChar)
+F.Intrinsic.Control.EndIf
+Program.Sub.txtMaxChar_LostFocus.End
